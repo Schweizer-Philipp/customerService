@@ -1,14 +1,23 @@
 package customer_service.model;
 
+import customer_service.constraint.TaxIdConstraint;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Customer {
     @Id
+    @TaxIdConstraint
     private String taxId;
+
+    @NotEmpty(message = "Das Feld Vorname darf nicht leer sein.")
     private String firstName;
+
+    @NotEmpty(message = "Das Feld Nachname darf nicht leer sein.")
     private String lastName;
+    @Size(max = 100, message = "Das Feld Freitext-Informationen darf maximal 100 zeichen haben.")
     private String infos;
 
     public Customer(String taxId, String firstName, String lastName, String infos) {
