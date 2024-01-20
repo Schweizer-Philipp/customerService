@@ -1,5 +1,6 @@
 package customer_service.service;
 
+import customer_service.exception.CustomerAlreadyExistException;
 import customer_service.model.Customer;
 import customer_service.persistence.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ public class CustomerService {
     CustomerRepository customerRepository;
 
     public void insertCustomer(Customer customer) {
+
+        if(customerRepository.existsById(customer.getTaxId())) throw new CustomerAlreadyExistException(customer.getTaxId());
 
         customerRepository.saveAndFlush(customer);
     }
