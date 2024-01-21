@@ -5,10 +5,7 @@ import customer_service.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +15,7 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
+    @CrossOrigin
     @PostMapping("/customer")
     private ResponseEntity<?> addCustomer(@Valid @RequestBody Customer customer) {
 
@@ -26,8 +24,10 @@ public class CustomerController {
         return ResponseEntity.noContent().build();
     }
 
+    @CrossOrigin
     @GetMapping("/customers")
     private ResponseEntity<List<Customer>> addCustomer() {
+        //return ResponseEntity.notFound().build();
         return ResponseEntity.ok(customerService.getAllCustomer());
     }
 
