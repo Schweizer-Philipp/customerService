@@ -27,7 +27,6 @@ public class CustomerController {
     @CrossOrigin
     @GetMapping("/customers")
     private ResponseEntity<List<Customer>> addCustomer() {
-        //return ResponseEntity.notFound().build();
         return ResponseEntity.ok(customerService.getAllCustomer());
     }
 
