@@ -10,7 +10,7 @@ public enum TaxIdConstraints {
     NL("^NL[\\dA-Za-z+*]{10}\\d{2}$");
 
 
-    private String regex;
+    private final String regex;
 
     TaxIdConstraints(String regex) {
         this.regex = regex;
