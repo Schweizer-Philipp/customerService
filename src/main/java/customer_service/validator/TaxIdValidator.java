@@ -25,7 +25,7 @@ public class TaxIdValidator implements ConstraintValidator<TaxIdConstraint, Stri
     }
 
     private String generateErrorMessage() {
-        return "Die angegeben Umsatzsteuer-ID muss in einem der folgenden Länern gültig sein: " + Arrays.stream(TaxIdConstraints.values())
+        return "Die angegeben Umsatzsteuer-ID muss in einem der folgenden Ländern gültig sein: " + Arrays.stream(TaxIdConstraints.values())
                 .map(Enum::name)
                 .collect(Collectors.joining(", ")) + ".";
     }
